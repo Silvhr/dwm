@@ -42,7 +42,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
@@ -113,6 +113,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+    	{ MODKEY,                       XK_s, scratchpad_show,     {.i = 1} },
+    	{ MODKEY,                       XK_y, scratchpad_show,     {.i = 2} },
+    	{ MODKEY,                       XK_u, scratchpad_show,     {.i = 3} },
+    	{ MODKEY|ShiftMask,             XK_s, scratchpad_hide,     {.i = 1} },
+    	{ MODKEY|ShiftMask,             XK_y, scratchpad_hide,     {.i = 2} },
+   	{ MODKEY|ShiftMask,             XK_u, scratchpad_hide,     {.i = 3} },
+	{ MODKEY|ShiftMask,             XK_r,      scratchpad_remove,           {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -123,13 +130,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    { MODKEY,                       XK_s, scratchpad_show, {.i = 1} },
-    { MODKEY,                       XK_y, scratchpad_show, {.i = 2} },
-    { MODKEY,                       XK_u, scratchpad_show, {.i = 3} },
-    { MODKEY|ShiftMask,                       XK_s, scratchpad_hide, {.i = 1} },
-    { MODKEY|ShiftMask,                       XK_y, scratchpad_hide, {.i = 2} },
-    { MODKEY|ShiftMask,                       XK_u, scratchpad_hide, {.i = 3} },
-	{ MODKEY|ShiftMask,             XK_r,      scratchpad_remove,           {0} },
 };
 
 /* button definitions */
