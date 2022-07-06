@@ -78,15 +78,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,            		XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -126,6 +123,13 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY,                       XK_s, scratchpad_show, {.i = 1} },
+    { MODKEY,                       XK_y, scratchpad_show, {.i = 2} },
+    { MODKEY,                       XK_u, scratchpad_show, {.i = 3} },
+    { MODKEY|ShiftMask,                       XK_s, scratchpad_hide, {.i = 1} },
+    { MODKEY|ShiftMask,                       XK_y, scratchpad_hide, {.i = 2} },
+    { MODKEY|ShiftMask,                       XK_u, scratchpad_hide, {.i = 3} },
+	{ MODKEY|ShiftMask,             XK_r,      scratchpad_remove,           {0} },
 };
 
 /* button definitions */
